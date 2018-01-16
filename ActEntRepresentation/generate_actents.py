@@ -17,8 +17,10 @@ def edits1(word):
    return set(deletes + transposes + replaces + inserts)
 
 # Load in Word2Vec embeddings trained on Ubuntu Dialogue Corpus
-from gensim.models import Word2Vec
-w2v = Word2Vec.load_word2vec_format('ubuntu_vectors.bin', binary=True)
+#from gensim.models import Word2Vec
+import gensim
+#w2v = Word2Vec.load_word2vec_format('ubuntu_vectors.bin', binary=True)
+w2v = gensim.models.KeyedVectors.load_word2vec_format('ubuntu_vectors.bin', binary=True)
 
 # Load word -> entity dictionaries
 unigram2entity = cPickle.load(open('unigram2entity_dict.pkl', 'r'))
